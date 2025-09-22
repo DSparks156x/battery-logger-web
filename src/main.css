@@ -5,6 +5,7 @@
 /* Import existing styles */
 @import './styles.css';
 
+/* Fix any potential UI issues */
 .progress-bar .progress.waiting {
   width: 100%;
   background: linear-gradient(
@@ -26,4 +27,101 @@
   50% {
     background-position: 150% 50%;
   }
-} 
+}
+
+/* 3D Spinning Cow Styles */
+.cow-container {
+  perspective: 1000px;
+  perspective-origin: center center;
+}
+
+.cow-3d {
+  transform-style: preserve-3d;
+  animation: spin3d 8s linear infinite;
+  position: relative;
+}
+
+.cow-body {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.cow-face {
+  font-size: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  background: linear-gradient(45deg, #ffffff, #f0f0f0);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateZ(20px);
+  animation: float 3s ease-in-out infinite;
+}
+
+.cow-face::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(45deg, #e0e0e0, #d0d0d0);
+  border-radius: 15px;
+  transform: translateZ(-40px);
+  z-index: -1;
+}
+
+.cow-face::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(45deg, #f5f5f5, #e5e5e5);
+  border-radius: 15px;
+  transform: rotateY(90deg) translateZ(20px);
+  z-index: -1;
+}
+
+@keyframes spin3d {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  25% {
+    transform: rotateX(90deg) rotateY(90deg) rotateZ(0deg);
+  }
+  50% {
+    transform: rotateX(180deg) rotateY(180deg) rotateZ(90deg);
+  }
+  75% {
+    transform: rotateX(270deg) rotateY(270deg) rotateZ(180deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(270deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateZ(20px) translateY(0px);
+  }
+  50% {
+    transform: translateZ(20px) translateY(-10px);
+  }
+}
+
+/* Dark mode adjustments for the cow */
+.dark .cow-face {
+  background: linear-gradient(45deg, #4a5568, #2d3748);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dark .cow-face::before {
+  background: linear-gradient(45deg, #2d3748, #1a202c);
+}
+
+.dark .cow-face::after {
+  background: linear-gradient(45deg, #4a5568, #2d3748);
+}

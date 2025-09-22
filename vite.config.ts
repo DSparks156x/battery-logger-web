@@ -1,4 +1,3 @@
-
 import { defineConfig } from 'vite'
 import type { UserConfig } from 'vite'
 
@@ -10,7 +9,6 @@ const config: UserConfig = {
   build: {
     outDir: 'dist',
   },
-  base: './'
 }
 
-export default defineConfig(config) 
+export default defineConfig(config)
