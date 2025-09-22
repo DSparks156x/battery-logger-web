@@ -359,7 +359,11 @@ class BatteryLogger {
 
         if (currentReadingNum === numReadings) {
             const avgVoltage = this.currentReadings.reduce((sum, r) => sum + r.voltage, 0) / numReadings;
+            if (cellType === 'Samsung 50S') {
             const avgResistance = this.currentReadings.reduce((sum, r) => sum + r.resistance, 0) / numReadings;
+            } else {
+            const avgResistance = (this.currentReadings.reduce((sum, r) => sum + r.resistance, 0) / numReadings) + 7;
+            }
 
             let cellType = this.cellTypeInput.value;
             if (cellType === 'custom') {
