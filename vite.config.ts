@@ -9,6 +9,7 @@ const config: UserConfig = {
   build: {
     outDir: 'dist',
   },
+    base: './'
 }
 
 export default defineConfig(config)
