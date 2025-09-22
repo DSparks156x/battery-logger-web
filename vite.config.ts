@@ -10,7 +10,7 @@ const config: UserConfig = {
   build: {
     outDir: 'dist',
   },
-  base: './'
+  base: '/battery-logger-web/'
 }
 
 export default defineConfig(config) 
